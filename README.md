@@ -1,5 +1,5 @@
 # NumberConverter
-Convert integers and fixed point real numbers between numeral systems. Suppose numeral systems form 2 to 36. Alphabet is '0-9a-z\.'. Input strings are case insensitive. Length of numbers is limited olny by your available memory, since the program depends on Boost multiprecision integers (MPI).
+Convert integers and fixed point real numbers between numeral systems. Supposed numeral systems are form 2 to 36. Alphabet is '0-9a-z\.'. Input strings are case insensitive. Length of numbers is limited olny by your available memory, since the program depends on Boost multiprecision integers (MPI).
 
 The program depends on Boost for MPIs and Qt for interface.
 
@@ -54,14 +54,14 @@ Input:
 Output:
 - a, raised to power n.
 
-Use binary exponentiation. Pseudocode is not interesting.
+Use binary exponentiation. Implementation is not interesting.
 
 ### Procedure toString
 Input: 
 - inputNumber - MPI.
 
 Output:
-- outStr - string form inputNumber in system base2.
+- outStr - string form of inputNumber in system base2.
 
 Variables:
 - digits - vector of chars 0,..,9,a,..,z, as above.
@@ -82,12 +82,46 @@ Variables:
 
 ### Procedure fractionPartToString
 Input: 
-- num - rational number in range [0, 1), that is pair of MPIs.
+- num - rational number in range [0, 1).
 
 Output:
 - outStr - string form num in system base2.
 
 Variables:
+- digitsAfterPoint - max number of digits after point, as above.
 - digits - vector of chars 0,..,9,a,..,z, as above.
 
+```
+1. Put outStr := "".
+2. For i in [0, digitsAfterPoint-1] do:
+2.1. Assign num := fract(num) * base2.
+2.2. If num = 0, break loop 2.
+2.3. Assign num2 := floor(num).
+2.4. Assign outStr += digits[num2].
+3. Return outStr.
+```
+
+### Procedure fract
+Input: 
+- num - rational number in range.
+
+Output:
+- rational number - fractional part of num.
+
+```
+1. Return num - floor(num).
+```
+
+### Procedure floor
+Input: 
+- num - rational number in range.
+
+Output:
+- num2 - MPI, derived from rounding num to nearest integer towards minus inf.
+
+```
+1. Assign num2 := numerator(num) / denominator(num) - integer division.
+2. If num2 > num: in case of numerator(num) < 0 and num2 rounded towards zero:
+2.1. Assign num2 -= 1.
+3. Return num2.
 ```
