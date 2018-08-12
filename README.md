@@ -1,5 +1,5 @@
 # NumberConverter
-Convert integers and fixed point real numbers between numeral systems. Supported numeral systems are form 2 to 36. Alphabet is '0-9a-z\.'. Input strings are case insensitive. Parsing of input string stops, when parser meets the first error (wrong digit in a given system), with showing error message. (Or should I ignore all invalid characters?) Length of numbers is limited olny by your available memory, since the program depends on Boost multiprecision integers (MPI).
+Convert integers and fixed point real numbers between numeral systems. Supported numeral systems are form 2 to 36. Alphabet is '0-9a-z\.'. Input strings are case insensitive. Parsing of input string stops, when parser meets the first error (wrong character in a given system), with showing error message. (Or should I ignore all invalid characters?) Length of numbers is limited olny by your available memory, since the program depends on Boost multiprecision integers (MPI).
 
 The program is written in C++11 and depends on Boost for MPIs and Qt for interface.
 
