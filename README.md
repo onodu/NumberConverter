@@ -106,11 +106,9 @@ Input:
 - num - rational number in range.
 
 Output:
-- rational number - fractional part of num.
+- num2 - rational number - fractional part of num.
 
-```
-1. Return num - floor(num).
-```
+Implementation is not interesting.
 
 ### Procedure floor
 Input: 
@@ -119,9 +117,6 @@ Input:
 Output:
 - num2 - MPI, derived from rounding num to nearest integer towards minus inf.
 
-```
-1. Assign num2 := numerator(num) / denominator(num) - integer division.
-2. If num2 > num: in case of numerator(num) < 0 and num2 rounded towards zero:
-2.1. Assign num2 -= 1.
-3. Return num2.
-```
+Implementation is not interesting.
+
+More details in [this](NumberConverter.cpp) file.
