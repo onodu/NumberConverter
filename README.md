@@ -3,12 +3,12 @@ Convert integers and fixed point real numbers between numeral systems. Suppose n
 
 The program depends on Boost for MPIs and Qt for interface.
 
-## Pseudocode:
-### Core procedure:
+## Pseudocode
+### Core procedure
 Input: 
 - inputNumber - string, representing a number in system base1. inputNumber can contain one point, delimiting integer and fraction parts;
-- base1 - number, denoting system of input number;
-- base2 - number, denoting system of output number;
+- base1 - integer number, denoting system of input number;
+- base2 - integer number, denoting system of output number;
 - digitsAfterPoint - number, limiting length of faction part in output number.
 
 Output:
@@ -26,3 +26,11 @@ Output:
 5.1. Assign outString += "." + fractionPartToString(fractPart).
 6. Return outString.
 ```
+
+### Procedure pow
+Input: 
+- a - MPI;
+- n - integer number.
+Output:
+- a raised to power n.
+
