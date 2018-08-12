@@ -15,8 +15,11 @@ Output:
 - outString - string, representing inputNumber in system base2. If inputNumber contains fraction part, outString can also contains one.  Some number in system base1 can haven't precise representation in system base2.
 
 ```
-1. Split inputNumber into intPartStr - part to left of the point, and fractPartStr - part to right of the point.
+1. Split inputNumber into intPartStr - part to left of the point, 
+   and fractPartStr - part to right of the point.
 2. Put intPart := toInteger(intPartStr) - MPI, representing intPartStr as number.
-3. Put fractPart := {toInteger(fractPartStr), pow(base1, fractPartStr.size)} - rational number, consisting of MPIs {numerator, denominator}, representing fractPartStr as number less then 1.
+3. Put fractPart := {toInteger(fractPartStr), pow(base1, fractPartStr.size)} - 
+   rational number, consisting of MPIs {numerator, denominator}, 
+   representing fractPartStr as number less then 1.
 4. Put outString := toString(intPart)
 ```
