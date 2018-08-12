@@ -20,6 +20,9 @@ Output:
 2. Put intPart := toInteger(intPartStr) - MPI, representing intPartStr as number.
 3. Put fractPart := {toInteger(fractPartStr), pow(base1, fractPartStr.size)} - 
    rational number, consisting of MPIs {numerator, denominator}, 
-   representing fractPartStr as number less then 1.
-4. Put outString := toString(intPart)
+   representing fractPartStr as number from [0, 1).
+4. Put outString := toString(intPart).
+5. If fractPart > 0 and digitsAfterPoint > 0:
+5.1. Assign outString += "." + fractionPartToString(fractPart).
+6. Return outString.
 ```
