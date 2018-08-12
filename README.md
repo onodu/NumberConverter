@@ -27,10 +27,24 @@ Output:
 6. Return outString.
 ```
 
+### Procedure toInteger
+Input: 
+- inputNumber - string form of MPI number in system base1;
+- digits - vector of chars 0,..,9,a,..,z, where char index from beginning denotes numeral value of this symbolic digit.
+
+Output:
+- num - MPI form of inputNumber.
+
+1. Put MPIs num := 0, num2 := 1.
+2. For every char c in inputNumber from end to begin do:
+2.1. 
+
 ### Procedure pow
 Input: 
 - a - MPI;
 - n - integer number.
-Output:
-- a raised to power n.
 
+Output:
+- a, raised to power n.
+
+Use binary exponentiation. Pseudocode is not interesting.
