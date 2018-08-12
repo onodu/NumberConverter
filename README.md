@@ -29,15 +29,22 @@ Output:
 
 ### Procedure toInteger
 Input: 
-- inputNumber - string form of MPI number in system base1;
-- digits - vector of chars 0,..,9,a,..,z, where char index from beginning denotes numeral value of this symbolic digit.
+- inputNumber - string form of MPI number in system base1.
 
 Output:
 - num - MPI form of inputNumber.
 
+Variables:
+- digits - vector of chars 0,..,9,a,..,z, where item index from beginning denotes numeral value of this symbolic digit. Indicies are 0-based.
+
+```
 1. Put MPIs num := 0, num2 := 1.
 2. For every char c in inputNumber from end to begin do:
-2.1. 
+2.1. Put num3 := index of c in vector digits.
+2.2. Assign num += num2 * num3.
+2.3. Assign num2 *= base1.
+3. Return num.
+```
 
 ### Procedure pow
 Input: 
@@ -48,3 +55,39 @@ Output:
 - a, raised to power n.
 
 Use binary exponentiation. Pseudocode is not interesting.
+
+### Procedure toString
+Input: 
+- inputNumber - MPI.
+
+Output:
+- outStr - string form inputNumber in system base2.
+
+Variables:
+- digits - vector of chars 0,..,9,a,..,z, as above.
+
+```
+1. Put outStr := "".
+2. If inputNumber = 0:
+2.1. Return "0".
+2. While inputNumber > 0, do:
+2.1. Divide inputNumber by base2 and get numbers:
+     remainder r - integer;
+     quotient q - MPI.
+2.2. Assign outStr += digits[r]
+2.3. Assign inputNumber := q.
+3. Reverse chars in outStr.
+4. Return outStr.
+```
+
+### Procedure fractionPartToString
+Input: 
+- num - rational number in range [0, 1), that is pair of MPIs.
+
+Output:
+- outStr - string form num in system base2.
+
+Variables:
+- digits - vector of chars 0,..,9,a,..,z, as above.
+
+```
