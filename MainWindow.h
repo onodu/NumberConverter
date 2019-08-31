@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include <QMessageBox>
 
-#include <memory>
 
 #include "NumberConverter.h"
 
@@ -18,8 +17,8 @@ class MainWindow : public QMainWindow
 	Q_OBJECT
 
 public:
-	explicit MainWindow(QWidget *parent = 0);
-	~MainWindow();
+	explicit MainWindow(QWidget *parent = nullptr);
+	virtual ~MainWindow() override;
 
 private slots:
 	void on_action_triggered();
@@ -28,19 +27,20 @@ private slots:
 
 	void on_pushButton_2_clicked();
 
-	void on_plainTextEdit_textChanged();
+	void on_plainTextEditInput_textChanged();
 
-	void on_plainTextEdit_2_textChanged();
+	void on_plainTextEditOutput_textChanged();
 
 	void on_action_3_triggered();
 
 private:
 	Ui::MainWindow *ui;
 
-	NumberConverter m_conv;
+	nsNumberConverter::NumberConverter m_conv;
 
 	void keyPressEvent(QKeyEvent *event) override;
 	bool eventFilter(QObject *target, QEvent *event) override;
+	void clearFields();
 };
 
 #endif // MAINWINDOW_H

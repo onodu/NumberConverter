@@ -11,19 +11,26 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = NumberConverter
 TEMPLATE = app
 
-QMAKE_CXXFLAGS += -std=c++14
+#CONFIG += c++11
 
-# in order gcc not to warn
-QMAKE_CXXFLAGS += -isystem$$[QT_INSTALL_HEADERS]\
-	-isystemK:\1\0\source\boost_1_67_0
+QMAKE_CXXFLAGS += -std=c++17 -Werror=return-type -Werror=pedantic --pedantic-errors -Wall -Wextra
+
+QMAKE_CXXFLAGS_RELEASE -= -O2
+QMAKE_CXXFLAGS_RELEASE += -O3
+
+QMAKE_CXXFLAGS_DEBUG += -O0
+
+QMAKE_CXXFLAGS += -isystemK:\1\0\source\boost_1_71_0
 
 
 SOURCES += main.cpp\
 		MainWindow.cpp\
-		NumberConverter.cpp
+		NumberConverter.cpp \
+		Ut.cpp
 
 HEADERS  += MainWindow.h\
-		NumberConverter.h
+		NumberConverter.h \
+		Ut.h
 
 FORMS    += MainWindow.ui
 

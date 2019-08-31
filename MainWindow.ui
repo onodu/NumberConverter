@@ -44,7 +44,7 @@
        </widget>
       </item>
       <item row="1" column="0" colspan="2">
-       <widget class="QPlainTextEdit" name="plainTextEdit">
+       <widget class="QPlainTextEdit" name="plainTextEditInput">
         <property name="font">
          <font>
           <family>Lucida Console</family>
@@ -75,7 +75,7 @@
        </widget>
       </item>
       <item row="1" column="0" colspan="2">
-       <widget class="QPlainTextEdit" name="plainTextEdit_2">
+       <widget class="QPlainTextEdit" name="plainTextEditOutput">
         <property name="font">
          <font>
           <family>Lucida Console</family>
@@ -152,7 +152,7 @@
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QLineEdit" name="lineEdit">
+       <widget class="QLineEdit" name="lineEditBase1">
         <property name="maximumSize">
          <size>
           <width>60</width>
@@ -218,7 +218,7 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="lineEdit_2">
+       <widget class="QLineEdit" name="lineEditBase2">
         <property name="maximumSize">
          <size>
           <width>60</width>
@@ -273,11 +273,6 @@
     <string>Exit</string>
    </property>
   </action>
-  <action name="action_2">
-   <property name="text">
-    <string>О программе...</string>
-   </property>
-  </action>
   <action name="action_3">
    <property name="text">
     <string>Grammar</string>
@@ -286,11 +281,11 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
-  <tabstop>plainTextEdit</tabstop>
-  <tabstop>lineEdit</tabstop>
-  <tabstop>lineEdit_2</tabstop>
+  <tabstop>plainTextEditInput</tabstop>
+  <tabstop>lineEditBase1</tabstop>
+  <tabstop>lineEditBase2</tabstop>
   <tabstop>lineEdit_3</tabstop>
-  <tabstop>plainTextEdit_2</tabstop>
+  <tabstop>plainTextEditOutput</tabstop>
   <tabstop>pushButton</tabstop>
   <tabstop>pushButton_2</tabstop>
  </tabstops>

@@ -8,61 +8,57 @@
 #include <sstream>
 #include <string>
 #include <memory>
+#include <exception>
+#include <cstddef>
 
 #include <boost/multiprecision/cpp_int.hpp>
 #include <boost/algorithm/string.hpp>
 
+namespace nsNumberConverter
+{
 
 class NumberConverter
 {
 public:
-	std::string operator() (const std::string &inputNumber = "0", unsigned base1 = 10, unsigned base2 = 10, unsigned digitsAfterPoint = 0);
+	std::string operator() (const std::string &inputNumber = "0"
+			, const std::size_t base1 = 10
+			, const std::size_t base2 = 10
+			, const std::size_t digitsAfterPoint = 0);
 
-	unsigned minBase() const;
-	unsigned maxBase() const;
-
-	class ParserException : std::exception
-	{
-	public:
-		ParserException(const std::string &msg, int pos) : m_msg(msg), m_pos(pos)
-		{}
-
-		const char * what() const noexcept override
-		{
-			return m_msg.c_str();
-		}
-
-		int pos() const
-		{
-			return m_pos;
-		}
-
-	private:
-		std::string m_msg;
-		int m_pos;
-	};
+	std::size_t minBase() const;
+	std::size_t maxBase() const;
 
 private:
-	typedef boost::multiprecision::cpp_int integer_t;
-	typedef boost::multiprecision::cpp_rational rational_t;
+	using Integer_t = boost::multiprecision::cpp_int;
+	using Rational_t = boost::multiprecision::cpp_rational;
 
-	static const std::vector<char>& digits();
-	static void divide(unsigned &r, integer_t &q, integer_t a, unsigned b);
-	static rational_t fract(rational_t num);
-	static integer_t floor(rational_t num);
-	static integer_t pow(integer_t a, unsigned n);
-	static std::string to_string(const integer_t &a);
-	static std::string to_string(const rational_t &a);
-	std::pair<std::string, std::string> parseIntFractPart(std::string s);
+	static const std::vector<char>& DIGITS();
+	static Rational_t fract(Rational_t num);
+	static Integer_t floor(Rational_t num);
+	std::pair<std::string, std::string> parseIntFractPart(std::string s) const;
 
-	std::string toString(integer_t num) const;
-	integer_t toInteger(const std::string &inputNumber) const;
-	std::string fractionPartToString(rational_t num) const;
-	static std::string removeSpaces(std::string s);
+	std::string toStringBase2(Integer_t num) const;
+	Integer_t toInteger(const std::string &inputNumber) const;
+	std::string fractionPartToString(Rational_t num) const;
 
-	unsigned m_base1, m_base2, m_digitsAfterPoint;
+	static const char m_decimalSeparator;
 
-	
+	std::size_t m_base1, m_base2, m_digitsAfterPoint;
+
 };
+
+class ParserException : std::exception
+{
+public:
+	ParserException(const std::string &msg, int pos);
+	const char * what() const noexcept override;
+	int pos() const;
+
+private:
+	std::string m_msg;
+	int m_pos;
+};
+
+} // namespace nsNumberConverter
 
 #endif // NUMBERCONVERTER_H
