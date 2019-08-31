@@ -7,12 +7,12 @@ The program is written in C++17 and depends on Boost for MPIs and Qt for interfa
 ### Core procedure
 Input: 
 - inputNumber - string, a number in system base1. inputNumber can contain integer part, decimal point and fraction part;
-- base1 - integer, system of input number;
-- base2 - integer, system of output number;
+- base1 - integer, numeral system of input number;
+- base2 - integer, numeral system of output number;
 - digitsAfterPoint - integer to limit length of a faction part in an output number.
 
 Output:
-- outString - string, inputNumber in system base2. If inputNumber contains fraction part, outString can also contains one.  Some numbers in system base1 don't have precise representation in system base2.
+- outString - string, inputNumber in base2. If inputNumber contains fraction part, outString can also contains one.  Some numbers in system base1 don't have precise representation in system base2.
 
 ```
 1. Split inputNumber into intPartStr - part to left of the point, 
