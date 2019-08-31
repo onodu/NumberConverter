@@ -1,25 +1,25 @@
 # NumberConverter
-Convert integers and fixed point real numbers between numeral systems. Supports numeral systems form 2 to 36. Alphabet is '0-9a-z\.'. Input strings are case insensitive. Parsing of input string stops when parser meets the first error (wrong character in a given system) and shows you an error message. Length of numbers is limited olny by your available memory, since the program depends on Boost multiprecision integers (MPI).
+Convert integers and fixed point reals between numeral systems. Supports numeral systems form 2 to 36. Alphabet is '0-9a-z\.'. Input strings are case insensitive. Parsing of input string stops when parser meets the first error (wrong character in a given system) and shows you an error message. Length of numbers is limited olny by your available memory as the program depends on Boost multiprecision integers (MPI).
 
 The program is written in C++17 and depends on Boost for MPIs and Qt for interface.
 
 ## Pseudocode
 ### Core procedure
 Input: 
-- inputNumber - string, representing a number in system base1. inputNumber can contain one point, delimiting integer and fraction parts;
-- base1 - integer number, denoting system of input number;
-- base2 - integer number, denoting system of output number;
-- digitsAfterPoint - number, limiting length of faction part in output number.
+- inputNumber - string, a number in system base1. inputNumber can contain integer part, decimal point and fraction part;
+- base1 - integer, system of input number;
+- base2 - integer, system of output number;
+- digitsAfterPoint - integer to limit length of a faction part in an output number.
 
 Output:
-- outString - string, representing inputNumber in system base2. If inputNumber contains fraction part, outString can also contains one.  Some number in system base1 can haven't precise representation in system base2.
+- outString - string, inputNumber in system base2. If inputNumber contains fraction part, outString can also contains one.  Some numbers in system base1 don't have precise representation in system base2.
 
 ```
 1. Split inputNumber into intPartStr - part to left of the point, 
    and fractPartStr - part to right of the point.
-2. Put intPart := toInteger(intPartStr) - MPI, representing intPartStr as number.
+2. Put intPart := toInteger(intPartStr) - MPI, intPartStr as number.
 3. Put fractPart := {toInteger(fractPartStr), pow(base1, fractPartStr.size)} - 
-   rational number, consisting of MPIs {numerator, denominator}, 
+   rational number consisting of MPIs {numerator, denominator} 
    representing fractPartStr as number from [0, 1).
 4. Put outString := toString(intPart).
 5. If fractPart > 0 and digitsAfterPoint > 0:
@@ -35,7 +35,7 @@ Output:
 - num - MPI form of inputNumber.
 
 Variables:
-- digits - vector of chars 0,..,9,a,..,z, where item index from beginning denotes numeral value of this symbolic digit. Indicies are 0-based.
+- digits - vector of chars 0,..,9,a,..,z, where item index from the beginning denotes numeral value of this symbolic digit. Indicies are 0-based.
 
 ```
 1. Put MPIs num := 0, num2 := 1.
@@ -70,11 +70,11 @@ Variables:
 1. Put outStr := "".
 2. If inputNumber = 0:
 2.1. Return "0".
-2. While inputNumber > 0, do:
+2. While inputNumber > 0 do:
 2.1. Divide inputNumber by base2 and get numbers:
-     remainder r - integer;
-     quotient q - MPI.
-2.2. Assign outStr += digits[r]
+     r - integer, remainder;
+     q - MPI, quotient.
+2.2. Assign outStr += digits[r].
 2.3. Assign inputNumber := q.
 3. Reverse chars in outStr.
 4. Return outStr.
@@ -106,7 +106,7 @@ Input:
 - num - rational number in range.
 
 Output:
-- num2 - rational number - fractional part of num.
+- num2 - rational number, fractional part of num.
 
 Implementation is not interesting.
 
