@@ -1,7 +1,7 @@
 # NumberConverter
-Convert integers and fixed point real numbers between numeral systems. Supported numeral systems are form 2 to 36. Alphabet is '0-9a-z\.'. Input strings are case insensitive. Parsing of input string stops, when parser meets the first error (wrong character in a given system), with showing error message. (Or should I ignore all invalid characters?) Length of numbers is limited olny by your available memory, since the program depends on Boost multiprecision integers (MPI).
+Convert integers and fixed point real numbers between numeral systems. Supports numeral systems form 2 to 36. Alphabet is '0-9a-z\.'. Input strings are case insensitive. Parsing of input string stops when parser meets the first error (wrong character in a given system) and shows you an error message. Length of numbers is limited olny by your available memory, since the program depends on Boost multiprecision integers (MPI).
 
-The program is written in C++11 and depends on Boost for MPIs and Qt for interface.
+The program is written in C++17 and depends on Boost for MPIs and Qt for interface.
 
 ## Pseudocode
 ### Core procedure
@@ -54,7 +54,7 @@ Input:
 Output:
 - a, raised to power n.
 
-Use binary exponentiation. Implementation is not interesting.
+Use boost::multiprecision::pow(MPI, unsigned). Implementation is not interesting.
 
 ### Procedure toString
 Input: 
@@ -82,7 +82,7 @@ Variables:
 
 ### Procedure fractionPartToString
 Input: 
-- num - rational number in range [0, 1).
+- num - rational number in range \[0, 1\).
 
 Output:
 - outStr - string form num in system base2.
@@ -115,7 +115,7 @@ Input:
 - num - rational number in range.
 
 Output:
-- num2 - MPI, derived from rounding num to nearest integer towards minus inf.
+- num2 - MPI derived from rounding num to nearest integer towards minus inf.
 
 Implementation is not interesting.
 
