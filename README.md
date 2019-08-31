@@ -19,8 +19,8 @@ Output:
    and fractPartStr - part to right of the point.
 2. Put intPart := toInteger(intPartStr) - MPI, intPartStr as number.
 3. Put fractPart := {toInteger(fractPartStr), pow(base1, fractPartStr.size)} - 
-   rational number consisting of MPIs {numerator, denominator} 
-   representing fractPartStr as number from [0, 1).
+   rational number consists of MPIs {numerator, denominator} and
+   represens fractPartStr as number from [0, 1).
 4. Put outString := toString(intPart).
 5. If fractPart > 0 and digitsAfterPoint > 0:
 5.1. Assign outString += "." + fractionPartToString(fractPart).
