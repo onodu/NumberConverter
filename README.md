@@ -1,5 +1,5 @@
 # NumberConverter
-Convert integers and fixed point reals between numeral systems. Supports numeral systems form 2 to 36. Alphabet is '0-9a-z\.'. Input strings are case insensitive. Parsing of input string stops when parser meets the first error (wrong character in a given system) and shows you an error message. Length of numbers is limited olny by your available memory as the program depends on Boost multiprecision integers (MPI).
+Convert integers and fixed point reals between numeral systems. Supports numeral systems form 2 to 36. Alphabet is '0-9a-z\.'. Input strings are case insensitive. Parsing of input string stops when meets the first error (wrong character in a given system) and shows you an error message. Length of numbers is limited olny by your available memory as the program depends on Boost multiprecision integers (MPI).
 
 The program is written in C++17 and depends on Boost for MPIs and Qt for interface.
 
@@ -29,13 +29,13 @@ Output:
 
 ### Procedure toInteger
 Input: 
-- inputNumber - string form of MPI number in system base1.
+- inputNumber - string form of a MPI in system base1.
 
 Output:
 - num - MPI form of inputNumber.
 
 Variables:
-- digits - vector of chars 0,..,9,a,..,z, where item index from the beginning denotes numeral value of this symbolic digit. Indicies are 0-based.
+- digits - vector of chars 0,..,9,a,..,z, where item's index from the beginning denotes numeral value of this symbolic digit. Indicies are 0-based.
 
 ```
 1. Put MPIs num := 0, num2 := 1.
@@ -54,7 +54,7 @@ Input:
 Output:
 - a, raised to power n.
 
-Use boost::multiprecision::pow(MPI, unsigned). Implementation is not interesting.
+Use boost::multiprecision::pow(MPI, unsigned).
 
 ### Procedure toString
 Input: 
@@ -85,7 +85,7 @@ Input:
 - num - rational number in range \[0, 1\).
 
 Output:
-- outStr - string form num in system base2.
+- outStr - string form of num in system base2.
 
 Variables:
 - digitsAfterPoint - max number of digits after point, as above.
@@ -93,7 +93,7 @@ Variables:
 
 ```
 1. Put outStr := "".
-2. For i in [0, digitsAfterPoint-1] do:
+2. For i in [0, digitsAfterPoint) do:
 2.1. Assign num := fract(num) * base2.
 2.2. If num = 0, break loop 2.
 2.3. Assign num2 := floor(num).
