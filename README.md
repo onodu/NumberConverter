@@ -127,13 +127,6 @@ Output:
 
 More details in [this](NumberConverter.cpp) file.
 
-## Prebuild binaries
-
-- Windows 64 bit: zip [file](https://drive.google.com/uc?id=1sJNFR1JBYwTgmtFiBTNi7CItP81NuMZ_), PGP [signature](https://drive.google.com/uc?id=1X-mTTkpJ_ljE2asOm4yOA_CsRaBHTC8R).
-
-My PGP key: https://pastebin.com/raw/MKP7SwJX
-
-
 ## Examples
 ![example1](examples/example1.png)
 ![example2](examples/example2.png)
